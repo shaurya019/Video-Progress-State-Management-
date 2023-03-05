@@ -1,13 +1,19 @@
 import 'package:flutter/cupertino.dart';
 
+
+late _VideoProgressState stateofVideoProgress;
+
 class VideoProgress extends StatefulWidget{
   @override
-  State<VideoProgress> createState() => _VideoProgressState();
+  State<VideoProgress> createState() {
+    stateofVideoProgress = _VideoProgressState();
+    return stateofVideoProgress;
+  }
 }
 
 class _VideoProgressState extends State<VideoProgress> {
   @override
-  final progress = 10.0;
+  var progress = 10.0;
   Widget build(BuildContext context) {
     return Center(
       child: Text(
