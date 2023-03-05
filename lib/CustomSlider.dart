@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:statemanagement/progress_value_provider.dart';
 
 import 'VideoProgress.dart';
 
@@ -10,23 +12,18 @@ class CustomSlider extends StatefulWidget{
 }
 
 class _CustomSliderState extends State<CustomSlider> {
-  var _value = 0.1;
   void _valueChange(double value) {
-    setState(() {
-      _value = value;
-    });
-    stateofVideoProgress.setState((){
-      stateofVideoProgress.progress = value*100;
-    });
+    Provider.of<ProgressValue>(context,listen: false).progress=value;
   }
   @override
   Widget build(BuildContext context) {
+    final progress = Provider.of<ProgressValue>(context).progress;
     return Container(
       height: 50,
       margin: EdgeInsets.symmetric(vertical: 30),
       child: Slider(
         onChanged: _valueChange,
-        value:_value,
+        value:progress,
       ),
     );
   }

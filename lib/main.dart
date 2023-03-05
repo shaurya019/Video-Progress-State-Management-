@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:statemanagement/progress_value_provider.dart';
 
 import 'CustomSlider.dart';
 import 'VideoProgress.dart';
@@ -46,7 +48,10 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
+      body:
+      ChangeNotifierProvider(
+      create: (_) => ProgressValue(),
+    child: Center(
         child: Stack(
     children: <Widget>[
       Expanded(
@@ -60,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
     )
     ],
     ),
+      ),
       ),
     );
   }

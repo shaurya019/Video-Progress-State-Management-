@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
-
+import 'package:provider/provider.dart';
+import 'package:statemanagement/progress_value_provider.dart';
+import 'package:provider/provider.dart';
 
 late _VideoProgressState stateofVideoProgress;
 
@@ -13,17 +15,22 @@ class VideoProgress extends StatefulWidget{
 
 class _VideoProgressState extends State<VideoProgress> {
   @override
-  var progress = 10.0;
+
   Widget build(BuildContext context) {
+    final progress = Provider.of<ProgressValue>(context,listen: false).progress * 100;
     return Center(
-      child: Text(
-        'Video Progress \n${progress.toStringAsFixed(2)}%',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
+        child: Text(
+          'Video Progress \n${progress.toStringAsFixed(2)}%',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-      ),
-    );
+      );
+
   }
 }
+
+
+
